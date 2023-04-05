@@ -14,7 +14,7 @@ autocmd! bufwritepost .vimrc source ~/.vimrc
 
 
 "ENABLE MOUSE SUPPORT"
-set mouse=a
+"set mouse=a
 
 
 
@@ -101,4 +101,23 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif  
 "Restore cursor to file position in previous editing session
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"FOR MATLAB"
+"
+autocmd BufRead,BufNewFile *.m set filetype=matlab
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" ... add your plugins here ...
+Plugin 'sheerun/vim-p'
+
+" all of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
