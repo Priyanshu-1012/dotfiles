@@ -91,6 +91,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias exai='exa --icons'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -121,7 +122,7 @@ eval "$(starship init bash)"
 
 
 #BANNER_AT-START ON TERMINAL
-fm6000 -say "Ahh..shit. Here we go again."
+#fm6000 -say "Ahh..shit. Here we go again."
 source ~/.starship-completions.bash
 
 #CUSTOM COMMANDS/SHORTCUTS
