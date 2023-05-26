@@ -1,37 +1,11 @@
-param(
-    [switch]$p
-)
+$folderPath = (Get-Item -Path ".\").FullName
 
-$Path = $null
-
-if ($p) {
-    $Path = Read-Host "Enter the path:"
-} else {
-    $Path = (Get-Location).Path
+$size = Get-ChildItem -Path $folderPath -Recurse | Measure-Object -Property Length -Sum
+$sizeInBytes = $size.Sum
+$sizeInMB = [math]::round($sizeInBytes / 1MB,2)
+$sizeInGB= [math]::round($sizeInBytes / 1GB,1)
+if($sizeInMB -gt 1024)
+{Write-Host "Total Size: $sizeInGB GB"}
+else{
+Write-Host "Total Size: $sizeInMB MB"
 }
-
-$size = 0
-
-$files = Get-ChildItem -Recurse -Force -File -LiteralPath $Path -ErrorAction SilentlyContinue
-if ($files) {
-    foreach ($file in $files) {
-        $size += $file.Length
-    }
-}
-
-$folders = Get-ChildItem -Recurse -Force -Directory -LiteralPath $Path -ErrorAction SilentlyContinue
-if ($folders) {
-    foreach ($folder in $folders) {
-        $size += (Get-ChildItem -Recurse -Force -File -LiteralPath $folder.FullName -ErrorAction SilentlyContinue | Measure-Object -Property Length -Sum).Sum
-    }
-}
-
-if ($size -ge 1GB) {
-    $sizeFormatted = "{0:N2} GB" -f ($size / 1GB)
-} elseif ($size -ge 1MB) {
-    $sizeFormatted = "{0:N2} MB" -f ($size / 1MB)
-} else {
-    $sizeFormatted = "{0:N2} KB" -f ($size / 1KB)
-}
-
-Write-Host "Total Size: $sizeFormatted"
