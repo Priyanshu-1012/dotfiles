@@ -1,20 +1,5 @@
-"________________________"
-" VIM CONFIGURATION "
-"-------------------------"
-
-
-"AUTOREAD WHEN FILE CHANGED FROM OUTSIDE"
-set autoread
-
-
-
-"AUTORELOAD VIMRC WHILE EDITING"
 autocmd! bufwritepost .vimrc source ~/.vimrc   
 
-
-
-"ENABLE MOUSE SUPPORT"
-"set mouse=a
 
 
 

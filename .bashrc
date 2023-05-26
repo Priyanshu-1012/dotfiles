@@ -130,12 +130,8 @@ function utube() {
     cmd.exe /C start https://www.youtube.com/
 }
 
-function ghub(){
+function gh(){
     cmd.exe /C start https://github.com/Priyanshu-1012
-}
-
-function code(){
-    cmd.exe /C start https://vscode.dev/
 }
 
 alias mlab='~/bin/matlab/matlab.exe'

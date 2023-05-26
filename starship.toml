@@ -1,0 +1,10 @@
+[[battery.display]]
+threshold = 25
+style = 'bold red'
+
+[battery]
+charging_symbol = '󰂄 '
+
+[python]
+symbol=' '
+
