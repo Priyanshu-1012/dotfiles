@@ -37,9 +37,10 @@ function ghfolder{
     Invoke-Item "C:\Users\priya\Documents\GitHub"
 }
 
+
 Function docs { Set-Location "${env:USERPROFILE}/Documents" }
 Function dwn { Set-Location "${env:USERPROFILE}/Downloads" }
-
+function cdstartup{Set-location "C:\Users\priya\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"}
 Function  cdgh { Set-Location "${env:USERPROFILE}/Documents/Github" }
 function cdpwsh{Set-location "${env:USERPROFILE}/Documents/Powershell"}
 
@@ -50,10 +51,10 @@ function utube {Start-Process "https://www.youtube.com"
 function gh {Start-Process "https://github.com/Priyanshu-1012"
 }
 ##########################################################
-function exa{Get-ChildItem | Format-Wide}
+function l{Get-ChildItem | Format-Wide}
 
 #####
-function exad{Get-ChildItem | Sort-Object LastWriteTime -Descending | Format-Wide}
+function ld{Get-ChildItem | Sort-Object LastWriteTime -Descending | Format-Wide}
 
 
 ################################################################
@@ -112,13 +113,17 @@ function gf {
 }
 
 function gc {
-	git commit $args
+	git commit
 }
 ################################################################
 function du{
     & 'C:\Users\priya\Documents\PowerShell\du.ps1'
 }
+################################################################
+function search {
+    & 'C:\Users\priya\Documents\PowerShell\search.ps1'
 
+}
 ################################################################
 #calender 
 Function cal {
@@ -127,13 +132,15 @@ Function cal {
 
 ################################################################
 function systemage{
-  $installDateTime=Get-Date "09/26/2022"
+  $installDateTime=Get-Date "10/20/2022"
     $currentDate = Get-Date -Hour 0 -Minute 0 -Second 0
     $systemAge = $currentDate - $installDateTime
     $systemagedays=$systemAge.days
     $systemageyears= [math]::floor($systemagedays / 365)
+	if($systemageyears -eq 1){write-host "$systemageyears year, $systemagedays days"}
+else{
     Write-host "$systemageyears years, $systemagedays days"
-}
+}}
 ################################################################
 Function winfetch {
     & 'C:\Users\priya\Documents\PowerShell\winfetch.ps1'
@@ -141,6 +148,10 @@ Function winfetch {
 
 Function img2ascii {
     & 'C:\Users\priya\Documents\PowerShell\img2ascii.ps1'
+}
+
+Function fe {
+    & 'C:\Users\priya\Documents\PowerShell\winterm_fe.ps1'
 }
 ################################################################
 
