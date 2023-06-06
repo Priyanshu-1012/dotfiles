@@ -1,0 +1,18 @@
+[:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+audible-bell=false
+background-color='rgb(22,22,30)'
+background-transparency-percent=0
+bold-is-bright=true
+cursor-blink-mode='on'
+cursor-shape='underline'
+default-size-columns=96
+default-size-rows=39
+font='CaskaydiaCove Nerd Font 15'
+foreground-color='rgb(120,124,153)'
+palette=['rgb(0,0,0)', 'rgb(247,118,142)', 'rgb(158,206,106)', 'rgb(224,175,104)', 'rgb(0,0,170)', 'rgb(187,154,247)', 'rgb(0,170,170)', 'rgb(170,170,170)', 'rgb(85,85,85)', 'rgb(247,118,142)', 'rgb(187,244,125)', 'rgb(224,175,104)', 'rgb(122,162,247)', 'rgb(187,154,247)', 'rgb(85,255,255)', 'rgb(172,176,208)']
+use-system-font=false
+use-theme-colors=false
+use-theme-transparency=true
+use-transparent-background=false
+visible-name='tokyo'
+
