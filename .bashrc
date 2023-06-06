@@ -21,9 +21,6 @@ gh() {
 stage0gh(){
 xdg-open "https://github.com/stage0ds/test1"
 }
-function utube() {
-    cmd.exe /C start https://www.youtube.com/
-}
 alias setup_stage0='source $HOME/Stage0.github/test1/1st_runme_setup_environment; source $S0/setup/bash_aliases'
 ###############################################################
 # If not running interactively, don't do anything
