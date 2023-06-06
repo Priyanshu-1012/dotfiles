@@ -8,6 +8,7 @@ alias cls='clear'
 alias gs='git status'
 alias gp='git push'
 alias gl='git pull'
+alias dwn='cd ~/Downloads'
 ga() {
 git add "$@"
 }
