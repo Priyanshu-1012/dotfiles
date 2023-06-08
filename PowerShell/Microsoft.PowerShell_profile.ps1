@@ -154,7 +154,9 @@ Function fe {
     & 'C:\Users\priya\Documents\PowerShell\winterm_fe.ps1'
 }
 ################################################################
-
+function mbps{
+    & 'C:\Users\priya\Documents\PowerShell\mbps.ps1'
+}
 ################################################################
 
 
