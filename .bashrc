@@ -8,21 +8,6 @@ alias cls='clear'
 alias gs='git status'
 alias gp='git push'
 alias gl='git pull'
-alias dwn='cd ~/Downloads'
-ga() {
-git add "$@"
-}
-
-gc(){
-git commit "$@"
-}
-gh() {
-    xdg-open "https://github.com/Priyanshu-1012"
-}
-stage0gh(){
-xdg-open "https://github.com/stage0ds/test1"
-}
-alias setup_stage0='source $HOME/Stage0.github/test1/1st_runme_setup_environment; source $S0/setup/bash_aliases'
 ###############################################################
 # If not running interactively, don't do anything
 case $- in
