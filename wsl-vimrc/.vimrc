@@ -1,16 +1,13 @@
 set number
 set encoding=UTF-8
 syntax on
-set cursorline
+"set cursorline
 " Set the line number color to dark grey
-highlight LineNr ctermfg=darkgray
-
+"highlight LineNr ctermfg=darkgray
 " Set the active line number color to white
-highlight ActiveLineNr guifg=white ctermfg=white
-
+"highlight ActiveLineNr guifg=white ctermfg=white
 " Set the cursorline color to bold with a light grey background (color 237)
-highlight cursorline ctermbg=237 cterm=bold
-
+"highlight cursorline ctermbg=237 cterm=bold
 " Set cursor shape to a pipe in normal and visual mode, and make it blink
 if has('autocmd')
   autocmd InsertEnter * silent execute "!echo -ne '\e[6 q'" | redraw!

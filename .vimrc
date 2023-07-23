@@ -1,8 +1,35 @@
 syntax on
 set mouse=a
 set number
-highlight LineNr ctermfg=gray
-set belloff=all
+set encoding=UTF-8
+syntax on
+"set cursorline
+" Set the line number color to dark grey
+highlight LineNr ctermfg=darkgray
+
+" Set the active line number color to white
+highlight ActiveLineNr guifg=white ctermfg=white
+
+" Set the cursorline color to bold with a light grey background (color 237)
+highlight cursorline ctermbg=237 cterm=bold
+
+" Set cursor shape to a pipe in normal and visual mode, and make it blink
+if has('autocmd')
+  autocmd InsertEnter * silent execute "!echo -ne '\e[6 q'" | redraw!
+  autocmd InsertLeave * silent execute "!echo -ne '\e[2 q'" | redraw!
+  autocmd VimEnter,FocusGained,BufWinEnter * silent execute "!echo -ne '\e[1 q'" | redraw!
+  autocmd VimLeave,FocusLost,BufWinLeave * silent execute "!echo -ne '\e[2 q'" | redraw!
+endif
+""""""""""""""""""
+set autoindent		" auto indentation
+set incsearch		" incremental search
+set nobackup		" no *~ backup files
+set copyindent		" copy the previous indentation on autoindenting
+set ignorecase		" ignore case when searching
+set smartcase		" ignore case if search pattern is all lowercase,case-sensitive otherwise
+set smarttab		" insert tabs on the start of a line according to context
+
+" disable sound on errors
 set noerrorbells
 set tabstop=4
 set cursorline
