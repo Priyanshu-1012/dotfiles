@@ -1,5 +1,5 @@
 set number
-"set termguicolors
+set encoding=UTF-8
 syntax on
 set cursorline
 " Set the line number color to dark grey
@@ -98,7 +98,15 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 Plug 'flazz/vim-colorschemes'
 Plug 'ghifarit53/tokyonight-vim'
+Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'vhda/verilog_systemverilog.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'w0rp/ale'
 call plug#end()
+
+""""""""""""
+
 let g:airline_powerline_fonts = 1
 """""""""THEME""""
 set termguicolors
@@ -107,3 +115,6 @@ let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 1
 
 colorscheme tokyonight
+"""""""""""
+"NERD Tree
+nmap <C-n> :NERDTreeToggle<CR>
