@@ -98,6 +98,8 @@ set hlsearch
 " Set the commands to save in history default number is 20.
 set history=1000
 
+"""""""""""""""""
+""PLUG
 call plug#begin('~/local/share/nvim/plugged')
 
 Plug 'vim-airline/vim-airline'
@@ -109,6 +111,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vhda/verilog_systemverilog.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'bagrat/vim-buffet'
+Plug 'yuttie/comfortable-motion.vim'
 Plug 'w0rp/ale'
 call plug#end()
 
@@ -126,3 +130,20 @@ colorscheme tokyonight
 """""""""""
 "NERD Tree toggle with Ctrl+N
 nmap <C-n> :NERDTreeToggle<CR>
+""""""""""
+""""""BUFFER-TABLINE
+let g:buffet_always_show_tabline=0 "dont show when only one tab open
+let g:buffet_powerline_separators=1 "seperator icons
+let g:buffet_tab_icon=''  
+let g:buffet_modified_icon=''
+
+function! g:BuffetSetCustomColors()
+ " hi! BuffetCurrentBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#34364c guifg=#a9b1d6
+ hi! BuffetCurrentBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#a9ff82 guifg=#a9b1d6
+  "hi! BuffetActiveBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#9ece6a guifg=#ffffff
+  hi! BuffetBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#232433 guifg=#a9b1d6
+   hi! BuffetTab cterm=bold ctermbg=5 ctermfg=8 guibg=#232433 guifg=#a9b1d6
+  hi! BuffetModCurrentBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#ffd976 guifg=#a9b1d6
+endfunction
+"""""""""""""""""END OF BUFFERTABLINE
+
