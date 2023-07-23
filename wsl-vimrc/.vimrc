@@ -1,13 +1,23 @@
-set number
-set encoding=UTF-8
+"░░░██╗░░░██╗██╗███╗░░░███╗██████╗░░█████╗░
+"░░░██║░░░██║██║████╗░████║██╔══██╗██╔══██╗
+"░░░╚██╗░██╔╝██║██╔████╔██║██████╔╝██║░░╚═╝
+"░░░░╚████╔╝░██║██║╚██╔╝██║██╔══██╗██║░░██╗
+"██╗░░╚██╔╝░░██║██║░╚═╝░██║██║░░██║╚█████╔╝
+"╚═╝░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝╚═╝░░╚═╝░╚════╝░
+
+set number   "line number
+set encoding=UTF-8  
 syntax on
-"set cursorline
+set cursorline
 " Set the line number color to dark grey
-"highlight LineNr ctermfg=darkgray
+highlight LineNr ctermfg=darkgray
+
 " Set the active line number color to white
-"highlight ActiveLineNr guifg=white ctermfg=white
+highlight ActiveLineNr guifg=white ctermfg=white
+
 " Set the cursorline color to bold with a light grey background (color 237)
-"highlight cursorline ctermbg=237 cterm=bold
+highlight cursorline ctermbg=237 cterm=bold
+
 " Set cursor shape to a pipe in normal and visual mode, and make it blink
 if has('autocmd')
   autocmd InsertEnter * silent execute "!echo -ne '\e[6 q'" | redraw!
@@ -103,15 +113,16 @@ Plug 'w0rp/ale'
 call plug#end()
 
 """"""""""""
-
+"Airline customize
 let g:airline_powerline_fonts = 1
-"""""""""THEME""""
+
+"""""""""COLOR THEME""""
 set termguicolors
 
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 1
-
 colorscheme tokyonight
+
 """""""""""
-"NERD Tree
+"NERD Tree toggle with Ctrl+N
 nmap <C-n> :NERDTreeToggle<CR>
