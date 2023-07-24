@@ -4,7 +4,7 @@
 "░░░╚██╗░██╔╝██║██╔████╔██║██████╔╝██║░░╚═╝
 "░░░░╚████╔╝░██║██║╚██╔╝██║██╔══██╗██║░░██╗
 "██╗░░╚██╔╝░░██║██║░╚═╝░██║██║░░██║╚█████╔╝
-"╚═╝░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝╚═╝░░╚═╝░╚════╝░
+"╚═╝░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝╚═╝░░╚═╝░╚════╝░ https://github.com/Priyanshu-1012/my-dotfiles
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""BASIC CONFIG
@@ -120,10 +120,15 @@ let g:buffet_tab_icon=''
 let g:buffet_modified_icon=''
 
 function! g:BuffetSetCustomColors()
+
   hi! BuffetCurrentBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#a9ff82 guifg=#a9b1d6
-   hi! BuffetBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#232433 guifg=#a9b1d6
-   hi! BuffetTab cterm=bold ctermbg=5 ctermfg=8 guibg=#232433 guifg=#a9b1d6
+  
+  hi! BuffetBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#232433 guifg=#a9b1d6
+ 
+  hi! BuffetTab cterm=bold ctermbg=5 ctermfg=8 guibg=#232433 guifg=#a9b1d6
+  
   hi! BuffetModCurrentBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#ffd976 guifg=#a9b1d6
+
 endfunction
 
 "switch next buffer by TAB key
