@@ -1,7 +1,15 @@
-install Plug plugin manager for vim
+## to use it directly
+
+1. Backup your existing .vimrc file and copy command to terminal
+```
+curl -o ~/.vimrc https://raw.githubusercontent.com/Priyanshu-1012/my-dotfiles/master/vimrc/.vimrc
+```
+
+2. install Plug plugin manager for vim
 ```
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
-```:PlugInstall``` command to install all plugins<br>
+3. ```:PlugInstall``` command to install all plugins<br>
 delete the plugin line from .vimrc and command ```:PlugClear``` to remove Plugin
+
