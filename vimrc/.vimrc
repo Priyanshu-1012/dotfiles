@@ -80,20 +80,26 @@ call plug#begin('~/local/share/nvim/plugged')
 
 Plug 'vim-airline/vim-airline'
 "Plug 'vim-airline/vim-airline-themes'
-"Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+"Plug 'joshdick/onedark.vim'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 "Plug 'flazz/vim-colorschemes'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'scrooloose/nerdtree'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vhda/verilog_systemverilog.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'bagrat/vim-buffet'
-"Plug 'yuttie/comfortable-motion.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'yggdroot/indentline'
+"Plug 'junegunn/rainbow_parentheses.vim'
+"Plug 'terryma/vim-multiple-cursors'
 Plug 'ap/vim-css-color'
 "Plug 'jceb/vim-orgmode'
 Plug 'vimwiki/vimwiki'
 "Plug 'w0rp/ale'
-
+Plug 'airblade/vim-gitgutter'
+Plug 'preservim/nerdcommenter'
 call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -107,10 +113,16 @@ set termguicolors
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 1
 colorscheme tokyonight
+"colorscheme catppuccin_mocha
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
-""""""""""""""NERD Tree toggle with Ctrl+N
+""""""""""""""NERD Tree 
 nmap <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+let g:NERDTreeLimitedSyntax = 1 "disable uncommon extension highlighting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""BUFFER-TABLINE
@@ -132,9 +144,15 @@ function! g:BuffetSetCustomColors()
 endfunction
 
 "switch next buffer by TAB key
-noremap <Tab> :bn<CR> 
+noremap <Tab> :bn<CR>
+let g:indentLine_char = '|' "indent line character
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""VIMWIKI
 let g:vimwiki_list=[{'path':'~/Documents/vimwiki/', 'syntax' : 'markdown','ext' : '.md' }]
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""COMMENTER NOTE....always use visual mode
+"<leader>c<space> toggle comment state of current line
+"<leader>cc       comment out current line or selected text
+
