@@ -11,5 +11,5 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs     https://raw.githubuserconte
 ```
 
 3. ```:PlugInstall``` command to install all plugins<br>
-delete the plugin line from .vimrc and command ```:PlugClear``` to remove Plugin
+delete the plugin line from .vimrc and command ```:PlugClean``` to remove Plugin
 
