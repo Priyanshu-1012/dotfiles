@@ -5,6 +5,8 @@
 "██╗░░╚██╔╝░░██║██║░╚═╝░██║██║░░██║╚█████╔╝
 "╚═╝░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝╚═╝░░╚═╝░╚════╝░
 
+let mapleader = " " " map leader to Space
+set path+=**
 set number   "line number
 set encoding=UTF-8  
 syntax on
@@ -47,7 +49,6 @@ set tm=500
 
    au FileType Makefile set noexpandtab
 "}   
-""""""""""""""""'
 """"""""""""""""''
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
@@ -113,6 +114,10 @@ Plug 'vhda/verilog_systemverilog.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'bagrat/vim-buffet'
 Plug 'yuttie/comfortable-motion.vim'
+Plug 'ap/vim-css-color'
+Plug 'jceb/vim-orgmode'
+Plug 'vimwiki/vimwiki'
+
 Plug 'w0rp/ale'
 call plug#end()
 
@@ -138,12 +143,16 @@ let g:buffet_tab_icon=''
 let g:buffet_modified_icon=''
 
 function! g:BuffetSetCustomColors()
- " hi! BuffetCurrentBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#34364c guifg=#a9b1d6
- hi! BuffetCurrentBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#a9ff82 guifg=#a9b1d6
-  "hi! BuffetActiveBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#9ece6a guifg=#ffffff
-  hi! BuffetBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#232433 guifg=#a9b1d6
+  hi! BuffetCurrentBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#a9ff82 guifg=#a9b1d6
+   hi! BuffetBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#232433 guifg=#a9b1d6
    hi! BuffetTab cterm=bold ctermbg=5 ctermfg=8 guibg=#232433 guifg=#a9b1d6
   hi! BuffetModCurrentBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#ffd976 guifg=#a9b1d6
 endfunction
-"""""""""""""""""END OF BUFFERTABLINE
+
+""switch next buffer by TAB key
+noremap <Tab> :bn<CR> 
+"""""""""""""""""
+
+""""""""""""VIMWIKI"""""""
+let g:vimwiki_list=[{'path':'~/Documents/vimwiki/', 'syntax' : 'markdown','ext' : '.md' }]
 
