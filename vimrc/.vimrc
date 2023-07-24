@@ -79,20 +79,20 @@ filetype plugin on    " Enable filetype-specific plugins
 call plug#begin('~/local/share/nvim/plugged')
 
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'catppuccin/vim', { 'as': 'catppuccin' }
-Plug 'flazz/vim-colorschemes'
+"Plug 'vim-airline/vim-airline-themes'
+"Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+"Plug 'flazz/vim-colorschemes'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vhda/verilog_systemverilog.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'bagrat/vim-buffet'
-Plug 'yuttie/comfortable-motion.vim'
+"Plug 'yuttie/comfortable-motion.vim'
 Plug 'ap/vim-css-color'
-Plug 'jceb/vim-orgmode'
+"Plug 'jceb/vim-orgmode'
 Plug 'vimwiki/vimwiki'
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 
 call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
