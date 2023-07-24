@@ -14,6 +14,7 @@ set mouse=a
 set nobackup
 set history=1000
 set nowrap
+set noshowmode      "because i already have airline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""VIM LOOKS
