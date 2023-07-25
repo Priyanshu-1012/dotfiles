@@ -1,8 +1,10 @@
 # dotfiles
 
 link to this [.vimrc](https://github.com/Priyanshu-1012/my-dotfiles/blob/main/vimrc/.vimrc) <br>
-<img width="450" alt="image" src="https://github.com/Priyanshu-1012/my-dotfiles/assets/39450902/390bf326-638f-4cce-b7db-528014683232">
+<img width="944" alt="image" src="https://github.com/Priyanshu-1012/dotfiles/assets/39450902/94524a90-1b33-4228-b513-0ad749cc4f19">
 
-<img width="450" alt="image" src="https://github.com/Priyanshu-1012/my-dotfiles/assets/39450902/c71750b2-3bac-4a05-9473-4081dcbbbee1">
+
+![image](https://github.com/Priyanshu-1012/dotfiles/assets/39450902/ba2a545c-6ee6-4c0b-8e5a-22e6cea79546)
+
 
 
