@@ -21,7 +21,7 @@ set noshowmode      "because i already have airline
 set number            
 set encoding=UTF-8  
 syntax on
-set cursorline                  
+set cursorline        
 
 " Set the line number color to dark grey
 highlight LineNr ctermfg=darkgray 
@@ -98,7 +98,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ap/vim-css-color'
 "Plug 'jceb/vim-orgmode'
 Plug 'vimwiki/vimwiki'
-"Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdcommenter'
 call plug#end()
@@ -106,9 +106,14 @@ call plug#end()
 
 """"""""""""AIRLINE CUSTOMIZATION
 let g:airline_powerline_fonts = 1
+let g:airline_left_sep = ''            "   
+let g:airline_left_alt_sep = ''            "
+let g:airline_right_sep = ''           "   
+let g:airline_right_alt_sep = ''           "
 let g:airline_extensions = ['branch', 'tabline'] "if branch icon not showing do :PlugUpdate
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_section_z = airline#section#create(['%3p%% %L:%3v'])  "for a simpler section Z 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -116,8 +121,8 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 set termguicolors
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 1
-colorscheme tokyonight
-"colorscheme catppuccin_mocha
+"colorscheme tokyonight
+colorscheme catppuccin_mocha
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -126,7 +131,7 @@ nmap <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
-let g:NERDTreeLimitedSyntax = 1 "disable uncommon extension highlighting
+"let g:NERDTreeLimitedSyntax = 1 "disable uncommon extension highlighting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""BUFFER-TABLINE
