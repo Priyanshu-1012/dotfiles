@@ -161,7 +161,7 @@ noremap <Tab> :bn<CR>
 let g:vimwiki_list=[{'path':'~/Documents/vimwiki/', 'syntax' : 'markdown','ext' : '.md' }]
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
-""""""""""""""""""COMMENTER NOTE....always use visual mode
+""""""""""""""""""NOTES....
 "<leader>c<space> toggle comment state of current line
 "<leader>cc       comment out current line or selected text
 
