@@ -1,4 +1,4 @@
-# my-dotfiles
+# dotfiles
 
 link to this [.vimrc](https://github.com/Priyanshu-1012/my-dotfiles/blob/main/vimrc/.vimrc) <br>
 <img width="450" alt="image" src="https://github.com/Priyanshu-1012/my-dotfiles/assets/39450902/390bf326-638f-4cce-b7db-528014683232">
