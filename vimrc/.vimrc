@@ -88,10 +88,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vhda/verilog_systemverilog.vim'
-Plug 'sheerun/vim-polyglot'
-Plug 'bagrat/vim-buffet'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'sheerun/vim-polyglot'
+"Plug 'bagrat/vim-buffet'
+Plug 'ctrlpvim/ctrlp.vim'
 "Plug 'yggdroot/indentline'
 "Plug 'junegunn/rainbow_parentheses.vim'
 "Plug 'terryma/vim-multiple-cursors'
@@ -106,6 +106,9 @@ call plug#end()
 
 """"""""""""AIRLINE CUSTOMIZATION
 let g:airline_powerline_fonts = 1
+let g:airline_extensions = ['branch', 'tabline'] "if branch icon not showing do :PlugUpdate
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -127,26 +130,26 @@ let g:NERDTreeLimitedSyntax = 1 "disable uncommon extension highlighting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""BUFFER-TABLINE
-let g:buffet_always_show_tabline=0 "dont show when only one tab open
-let g:buffet_powerline_separators=1 "seperator icons
-let g:buffet_tab_icon=''  
-let g:buffet_modified_icon=''
+"let g:buffet_always_show_tabline=0 "dont show when only one tab open
+"let g:buffet_powerline_separators=1 "seperator icons
+"let g:buffet_tab_icon=''  
+"let g:buffet_modified_icon=''
 
-function! g:BuffetSetCustomColors()
+"function! g:BuffetSetCustomColors()
 
-  hi! BuffetCurrentBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#a9ff82 guifg=#a9b1d6
+  "hi! BuffetCurrentBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#a9ff82 guifg=#a9b1d6
   
-  hi! BuffetBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#232433 guifg=#a9b1d6
+  "hi! BuffetBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#232433 guifg=#a9b1d6
  
-  hi! BuffetTab cterm=bold ctermbg=5 ctermfg=8 guibg=#232433 guifg=#a9b1d6
+  "hi! BuffetTab cterm=bold ctermbg=5 ctermfg=8 guibg=#232433 guifg=#a9b1d6
   
-  hi! BuffetModCurrentBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#ffd976 guifg=#a9b1d6
+  "hi! BuffetModCurrentBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#ffd976 guifg=#a9b1d6
 
-endfunction
+"endfunction
 
-"switch next buffer by TAB key
+""switch next buffer by TAB key
 noremap <Tab> :bn<CR>
-let g:indentLine_char = '|' "indent line character
+"let g:indentLine_char = '|' "indent line character
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""VIMWIKI
