@@ -1,1 +1,4 @@
 sudo apt install -y ranger meld htop tree gedit
+
+
+icons in ranger https://github.com/alexanderjeurissen/ranger_devicons
