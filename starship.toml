@@ -1,10 +1,14 @@
-[[battery.display]]
-threshold = 25
-style = 'bold red'
-
-[battery]
-charging_symbol = '󰂄 '
-
+[directory]
+truncation_length = 20
 [python]
 symbol=' '
-
+[scala]
+symbol=' '
+[java]
+symbol=' '
+style='yellow'
+[package]
+symbol=' '
+[vlang]
+symbol='󰍛 '
+style='purple'
