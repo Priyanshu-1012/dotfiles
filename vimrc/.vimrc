@@ -80,9 +80,15 @@ call plug#begin('~/local/share/nvim/plugged')
 
 Plug 'vim-airline/vim-airline'
 "Plug 'vim-airline/vim-airline-themes'
-"Plug 'joshdick/onedark.vim'
+Plug 'Rigellute/shades-of-purple.vim'
+Plug 'semibran/vim-colors-synthetic'
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 "Plug 'flazz/vim-colorschemes'
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'nanotech/jellybeans.vim'
+Plug 'hardhackerlabs/theme-vim', { 'as': 'hardhacker' }
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -97,7 +103,9 @@ Plug 'ctrlpvim/ctrlp.vim'
 "Plug 'terryma/vim-multiple-cursors'
 Plug 'ap/vim-css-color'
 "Plug 'jceb/vim-orgmode'
-Plug 'vimwiki/vimwiki'
+"Plug 'vimwiki/vimwiki'
+Plug 'lervag/wiki.vim'
+"Plug 'suoto/vim-hdl'
 Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdcommenter'
@@ -106,14 +114,14 @@ call plug#end()
 
 """"""""""""AIRLINE CUSTOMIZATION
 let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ''            "   
-let g:airline_left_alt_sep = ''            "
-let g:airline_right_sep = ''           "   
-let g:airline_right_alt_sep = ''           "
+let g:airline_left_sep = ''              " ''    ''
+let g:airline_left_alt_sep = ''            "''
+let g:airline_right_sep = ''              "''    ''   
+let g:airline_right_alt_sep = ''           "''
 let g:airline_extensions = ['branch', 'tabline'] "if branch icon not showing do :PlugUpdate
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_section_z = airline#section#create(['%3p%% %L:%3v'])  "for a simpler section Z 
+let g:airline_section_z = airline#section#create(['%3p%% %L:%3v'])  "for a simpler section Z
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -122,12 +130,28 @@ set termguicolors
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 1
 "colorscheme tokyonight
+"colorscheme dracula
 colorscheme catppuccin_mocha
+"colorscheme challenger_deep
+"cycle through theme with leader-t
+let s:themes = ['tokyonight', 'synthetic', 'dracula', 'catppuccin_mocha', 'catppuccin_frappe', 'challenger_deep', 'onehalfdark', 'hardhacker', 'jellybeans', 'shades_of_purple']
+let s:current_theme = 1 "0 to n
+
+function! CycleThemes()
+    let s:current_theme += 1
+    if s:current_theme >= len(s:themes)
+        let s:current_theme = 0
+    endif
+    execute 'colorscheme ' . s:themes[s:current_theme]
+endfunction
+
+nnoremap <Leader>t :call CycleThemes()<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""NERD Tree 
 nmap <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeShowHidden = 1 "show hidden files
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
@@ -158,10 +182,25 @@ noremap <Tab> :bn<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""VIMWIKI
-let g:vimwiki_list=[{'path':'~/Documents/vimwiki/', 'syntax' : 'markdown','ext' : '.md' }]
+let g:wiki_root = '~/Documents/wikivim'
+"let g:vimwiki_list=[{'path':'~/Documents/vimwiki/', 'syntax' : 'markdown','ext' : '.md' }]
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""Cpp file boiler plate
 
-""""""""""""""""""NOTES....
+au BufNewFile *.cpp 0r ~/.vim/templates/cpp_template.cpp
+au BufNewFile *.cpp call cursor(6,0) 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""Verilog file config
+source ~/.vim/verilogconfigs.vim
+
+""""""""""DEVICONS
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {
+         \ 'v': '󰍛',
+         \ 'sv':'󰍛',
+         \ 'vhd': '󰍛',
+         \ 'vhdl': '󰍛'}
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""COMMENTER NOTE....always use visual mode
 "<leader>c<space> toggle comment state of current line
 "<leader>cc       comment out current line or selected text
-
