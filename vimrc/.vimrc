@@ -16,7 +16,9 @@ set history=1000
 set nowrap
 set noshowmode      "because i already have airline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
-
+""cut n copy key mapping
+vnoremap <C-c> "+y  
+map <C-u> "+c
 """""""VIM LOOKS
 set number            
 set encoding=UTF-8  
@@ -114,10 +116,10 @@ call plug#end()
 
 """"""""""""AIRLINE CUSTOMIZATION
 let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ''              " ''    ''
-let g:airline_left_alt_sep = ''            "''
-let g:airline_right_sep = ''              "''    ''   
-let g:airline_right_alt_sep = ''           "''
+let g:airline_left_sep =  ''    "'' ''    ''
+let g:airline_left_alt_sep = ''    " ''    ''
+let g:airline_right_sep = ''          "''              ''    ''   
+let g:airline_right_alt_sep = ''         " ''           ''
 let g:airline_extensions = ['branch', 'tabline'] "if branch icon not showing do :PlugUpdate
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
@@ -129,9 +131,9 @@ let g:airline_section_z = airline#section#create(['%3p%% %L:%3v'])  "for a simpl
 set termguicolors
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 1
-"colorscheme tokyonight
+colorscheme tokyonight
 "colorscheme dracula
-colorscheme catppuccin_mocha
+"colorscheme catppuccin_mocha
 "colorscheme challenger_deep
 "cycle through theme with leader-t
 let s:themes = ['tokyonight', 'synthetic', 'dracula', 'catppuccin_mocha', 'catppuccin_frappe', 'challenger_deep', 'onehalfdark', 'hardhacker', 'jellybeans', 'shades_of_purple']
