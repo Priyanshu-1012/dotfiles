@@ -4,6 +4,7 @@ sudo apt autoremove
 
 
 sudo apt install -y git\
+                    vim-gtk\
                     build-essential\
                     ranger\
                     meld\
