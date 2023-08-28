@@ -88,11 +88,13 @@ Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 "Plug 'flazz/vim-colorschemes'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'rose-pine/vim'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'nanotech/jellybeans.vim'
 Plug 'hardhackerlabs/theme-vim', { 'as': 'hardhacker' }
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'scrooloose/nerdtree'
+Plug 'mhinz/vim-startify'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vhda/verilog_systemverilog.vim'
@@ -116,10 +118,10 @@ call plug#end()
 
 """"""""""""AIRLINE CUSTOMIZATION
 let g:airline_powerline_fonts = 1
-let g:airline_left_sep =  ''    "'' ''    ''
-let g:airline_left_alt_sep = ''    " ''    ''
-let g:airline_right_sep = ''          "''              ''    ''   
-let g:airline_right_alt_sep = ''         " ''           ''
+let g:airline_left_sep =''         " ''    ''
+let g:airline_left_alt_sep = ''    " ''
+let g:airline_right_sep = ''             " ''    ''   
+let g:airline_right_alt_sep = ''       "    ''
 let g:airline_extensions = ['branch', 'tabline'] "if branch icon not showing do :PlugUpdate
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
@@ -131,12 +133,12 @@ let g:airline_section_z = airline#section#create(['%3p%% %L:%3v'])  "for a simpl
 set termguicolors
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 1
-colorscheme tokyonight
+"colorscheme tokyonight
 "colorscheme dracula
-"colorscheme catppuccin_mocha
+colorscheme catppuccin_mocha
 "colorscheme challenger_deep
 "cycle through theme with leader-t
-let s:themes = ['tokyonight', 'synthetic', 'dracula', 'catppuccin_mocha', 'catppuccin_frappe', 'challenger_deep', 'onehalfdark', 'hardhacker', 'jellybeans', 'shades_of_purple']
+let s:themes = ['tokyonight', 'rosepine', 'synthetic', 'dracula', 'peachpuff', 'catppuccin_mocha', 'catppuccin_frappe', 'challenger_deep', 'onehalfdark', 'hardhacker', 'jellybeans', 'shades_of_purple', 'ron']
 let s:current_theme = 1 "0 to n
 
 function! CycleThemes()
@@ -149,7 +151,11 @@ endfunction
 
 nnoremap <Leader>t :call CycleThemes()<CR>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""STARTIFY"
+
+let g:startify_custom_header =
+             \ startify#pad(readfile('/home/xuxin/vim-ascii.txt'))
 
 """"""""""""""NERD Tree 
 nmap <C-n> :NERDTreeToggle<CR>
@@ -184,8 +190,8 @@ noremap <Tab> :bn<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""VIMWIKI
-"let g:wiki_root = '~/Documents/wikivim'
-"let g:vimwiki_list=[{'path':'~/Documents/vimwiki/', 'syntax' : 'markdown','ext' : '.md' }]
+let g:wiki_root = '~/Documents/wikivim'
+"let g:vimwiki_list=[{'path':'~/Documents/vimwroniki/', 'syntax' : 'markdown','ext' : '.md' }]
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""Cpp file boiler plate
 
