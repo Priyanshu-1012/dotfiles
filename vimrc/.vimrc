@@ -184,7 +184,7 @@ noremap <Tab> :bn<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""VIMWIKI
-let g:wiki_root = '~/Documents/wikivim'
+"let g:wiki_root = '~/Documents/wikivim'
 "let g:vimwiki_list=[{'path':'~/Documents/vimwiki/', 'syntax' : 'markdown','ext' : '.md' }]
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""Cpp file boiler plate
