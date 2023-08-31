@@ -197,24 +197,6 @@ let g:NERDTreePatternMatchHighlightFullName = 1
 "let g:NERDTreeLimitedSyntax = 1 "disable uncommon extension highlighting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"""""""""""""BUFFER-TABLINE
-"let g:buffet_always_show_tabline=0 "dont show when only one tab open
-"let g:buffet_powerline_separators=1 "seperator icons
-"let g:buffet_tab_icon=''  
-"let g:buffet_modified_icon=''
-
-"function! g:BuffetSetCustomColors()
-
-  "hi! BuffetCurrentBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#a9ff82 guifg=#a9b1d6
-  
-  "hi! BuffetBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#232433 guifg=#a9b1d6
- 
-  "hi! BuffetTab cterm=bold ctermbg=5 ctermfg=8 guibg=#232433 guifg=#a9b1d6
-  
-  "hi! BuffetModCurrentBuffer cterm=bold ctermbg=5 ctermfg=8 guibg=#ffd976 guifg=#a9b1d6
-
-"endfunction
-
 ""switch next buffer by TAB key
 noremap <Tab> :bn<CR>
 "let g:indentLine_char = '|' "indent line character
@@ -240,6 +222,3 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {
          \ 'vhdl': '󰍛'}
 
 """""""""""""""""""""""""""""""""""""""
-""""""""""""""""""COMMENTER NOTE....always use visual mode
-"<leader>c<space> toggle comment state of current line
-"<leader>cc       comment out current line or selected text
