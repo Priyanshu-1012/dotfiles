@@ -175,7 +175,8 @@ let g:startify_lists = [
 """"""""""
 let g:startify_bookmarks = [ 
          \{ 'v' : '~/.vimrc' },
-         \{ 'b' : '~/.bashrc' }
+         \{ 'b' : '~/.bashrc' },
+         \{ 'a' : '~/.bash_aliases'}
          \]
 
 let g:startify_enable_special = 0
