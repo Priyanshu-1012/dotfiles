@@ -82,23 +82,25 @@ filetype plugin on    " Enable filetype-specific plugins
 
 """"""""""PLUG
 call plug#begin('~/local/share/nvim/plugged')
-
+"---------themes---------
 Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'Rigellute/shades-of-purple.vim'
+Plug 'ayu-theme/ayu-vim'
 Plug 'semibran/vim-colors-synthetic'
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
-"Plug 'flazz/vim-colorschemes'
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'rose-pine/vim'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'nanotech/jellybeans.vim'
 Plug 'hardhackerlabs/theme-vim', { 'as': 'hardhacker' }
 Plug 'ghifarit53/tokyonight-vim'
+"---------------------------
 Plug 'scrooloose/nerdtree'
 Plug 'mhinz/vim-startify'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'Yggdroot/indentLine'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vhda/verilog_systemverilog.vim'
 Plug 'tpope/vim-fugitive'
@@ -122,11 +124,11 @@ call plug#end()
 
 """"""""""""AIRLINE CUSTOMIZATION
 let g:airline_powerline_fonts = 1
-let air_sel = 3 ""take values 0-3
-let lsep = ['', '', '' , '']
-let rsep = ['', '', '' , '']
-let lasep = ['', '', '', '']
-let rasep = ['', '', '', '']
+let air_sel = 1 "take values 0-4
+let lsep = ['', '', '' , '' , '']
+let rsep = ['', '', '' , '' , ''] 
+let lasep = ['', '', '', '' , '']
+let rasep = ['', '', '', '' , '']
 let g:airline_left_sep = lsep[air_sel]
 let g:airline_left_alt_sep = lasep[air_sel]
 let g:airline_right_sep = rsep[air_sel]   
@@ -136,18 +138,16 @@ let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_section_z = airline#section#create(['%3p%% %L:%3v'])  "for a simpler section Z
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
 """""""""""""COLOR THEME
 set termguicolors
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 1
+let g:embark_terminal_italics = 1
 "colorscheme tokyonight
-"colorscheme dracula
-colorscheme catppuccin_mocha
-"colorscheme challenger_deep
-"cycle through theme with leader-h
-let s:themes = ['tokyonight', 'rosepine', 'synthetic', 'dracula', 'peachpuff', 'catppuccin_mocha', 'catppuccin_frappe', 'challenger_deep', 'onehalfdark', 'hardhacker', 'jellybeans', 'shades_of_purple', 'ron']
+"colorscheme catppuccin_mocha
+colorscheme embark
+"cycle through theme with leader-t
+let s:themes = ['tokyonight', 'rosepine', 'synthetic', 'ayu_dark', 'ayu_mirage', 'dracula', 'peachpuff', 'catppuccin_mocha', 'catppuccin_frappe', 'onehalfdark', 'hardhacker', 'embark', 'jellybeans', 'shades_of_purple', 'ron']
 let s:current_theme = 1 "0 to n
 
 function! CycleThemes()
@@ -158,7 +158,7 @@ function! CycleThemes()
     execute 'colorscheme ' . s:themes[s:current_theme]
 endfunction
 
-nnoremap <Leader>h :call CycleThemes()<CR>
+nnoremap <Leader>t :call CycleThemes()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""STARTIFY"
 let g:webdevicons_enable_startify = 1
@@ -179,7 +179,7 @@ let g:startify_bookmarks = [
          \{ 'a' : '~/.bash_aliases'}
          \]
 
-let g:startify_enable_special = 0
+let g:startify_enable_special = 0   "disable quit and empty buffer
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""FLOATERM
 let g:floaterm_keymap_toggle= '<F8>'
@@ -221,4 +221,5 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {
          \ 'vhd': '󰍛',
          \ 'vhdl': '󰍛'}
 
-"""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""indentline"
+let g:indentLine_char = '▏'
