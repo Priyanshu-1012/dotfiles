@@ -1,4 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
 "░░░██╗░░░██╗██╗███╗░░░███╗██████╗░░█████╗░
 "░░░██║░░░██║██║████╗░████║██╔══██╗██╔══██╗
 "░░░╚██╗░██╔╝██║██╔████╔██║██████╔╝██║░░╚═╝
@@ -20,7 +20,7 @@ set noshowmode      "because i already have airline
 vnoremap <C-c> "+y  
 map <C-u> "+c
 """""""VIM LOOKS
-set number            
+set nu            
 set encoding=UTF-8  
 syntax on
 set cursorline        
@@ -42,7 +42,10 @@ if has('autocmd')
   autocmd VimLeave,FocusLost,BufWinLeave * silent execute "!echo -ne '\e[2 q'" | redraw!
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
-
+""""""""""""NEW COMMANDS
+command! Ranger FloatermNew ranger
+command! -nargs=0 Py FloatermNew python
+command! Htop  FloatermNew htop 
 """"""""""""""""INDENTATION and SEARCH
 set autoindent		" auto indentation
 set incsearch		" incremental search
@@ -102,6 +105,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'sheerun/vim-polyglot'
 "Plug 'bagrat/vim-buffet'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'voldikss/vim-floaterm'
 "Plug 'yggdroot/indentline'
 "Plug 'junegunn/rainbow_parentheses.vim'
 "Plug 'terryma/vim-multiple-cursors'
@@ -118,10 +122,15 @@ call plug#end()
 
 """"""""""""AIRLINE CUSTOMIZATION
 let g:airline_powerline_fonts = 1
-let g:airline_left_sep =''         " ''    ''
-let g:airline_left_alt_sep = ''    " ''
-let g:airline_right_sep = ''             " ''    ''   
-let g:airline_right_alt_sep = ''       "    ''
+let air_sel = 3 ""take values 0-3
+let lsep = ['', '', '' , '']
+let rsep = ['', '', '' , '']
+let lasep = ['', '', '', '']
+let rasep = ['', '', '', '']
+let g:airline_left_sep = lsep[air_sel]
+let g:airline_left_alt_sep = lasep[air_sel]
+let g:airline_right_sep = rsep[air_sel]   
+let g:airline_right_alt_sep = rasep[air_sel]
 let g:airline_extensions = ['branch', 'tabline'] "if branch icon not showing do :PlugUpdate
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
@@ -137,7 +146,7 @@ let g:tokyonight_enable_italic = 1
 "colorscheme dracula
 colorscheme catppuccin_mocha
 "colorscheme challenger_deep
-"cycle through theme with leader-t
+"cycle through theme with leader-h
 let s:themes = ['tokyonight', 'rosepine', 'synthetic', 'dracula', 'peachpuff', 'catppuccin_mocha', 'catppuccin_frappe', 'challenger_deep', 'onehalfdark', 'hardhacker', 'jellybeans', 'shades_of_purple', 'ron']
 let s:current_theme = 1 "0 to n
 
@@ -149,14 +158,35 @@ function! CycleThemes()
     execute 'colorscheme ' . s:themes[s:current_theme]
 endfunction
 
-nnoremap <Leader>t :call CycleThemes()<CR>
-
+nnoremap <Leader>h :call CycleThemes()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""STARTIFY"
-
+let g:webdevicons_enable_startify = 1
+let g:startify_fortune_use_unicode = 1 " beautiful symbols
+let g:startify_padding_left = 3 " the number of spaces used for left padding
 let g:startify_custom_header =
-             \ startify#pad(readfile('/home/xuxin/vim-ascii.txt'))
+         \ startify#pad(readfile('/home/xuxin/Documents/asciiart/pac-ascii.txt'))
+let g:startify_lists = [
+      \ { 'type': 'bookmarks', 'header': ["  Bookmarks"]      },
+      \ { 'type': 'files',     'header': [" 󰈙 MRU Files"]            },
+      \ { 'type': 'dir',       'header': ["  MRU Files in ". getcwd()] },
+      \ { 'type': 'commands',  'header': ["  Commands"]       },
+      \ ]
+""""""""""
+let g:startify_bookmarks = [ 
+         \{ 'v' : '~/.vimrc' },
+         \{ 'b' : '~/.bashrc' }
+         \]
 
+let g:startify_enable_special = 0
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""FLOATERM
+let g:floaterm_keymap_toggle= '<F8>'
+let g:floaterm_keymap_kill= '<F12>'
+let g:floaterm_keymap_prev= '<F9>'
+let g:floaterm_keymap_new= '<F7>'
+let g:floaterm_autoclose=1
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""NERD Tree 
 nmap <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeShowHidden = 1 "show hidden files
@@ -208,7 +238,7 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {
          \ 'vhd': '󰍛',
          \ 'vhdl': '󰍛'}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""COMMENTER NOTE....always use visual mode
 "<leader>c<space> toggle comment state of current line
 "<leader>cc       comment out current line or selected text
