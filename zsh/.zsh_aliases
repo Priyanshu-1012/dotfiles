@@ -1,0 +1,20 @@
+# Aliases
+alias h='history'
+alias cls='clear'
+alias ge='gedit'
+alias v='vim ~/.vimrc'
+alias gs='git status'
+alias gl='git pull'
+alias gp='git push'
+alias vimrcpush='bash ~/scripts/bash/push_vimrc.sh'
+alias gpush='bash ~/scripts/bash/gpush.sh'
+alias bl='bash ~/btrls.sh'
+alias gc='git commit'
+alias gf='git fetch'
+alias ga='git add'
+alias 
+em() {
+  emacs -nw "$@"
+}
+
+
