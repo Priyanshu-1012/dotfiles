@@ -1,0 +1,17 @@
+SHORTCUTS
+<L>th    sequence through themes
+<L>c<L>  toggle comment status
+F7       new terminal
+F8       toggle terminal
+F9       previous terminal 
+F12      kill terminal
+C-n      nerdTree
+C-u/C-c  Cut/copy
+Tab      switch buffers    
+
+
+COMMANDS
+:Pi      PluginInstall
+:Py      PythonTerminal
+:Il      Toggle IndentLines
+
