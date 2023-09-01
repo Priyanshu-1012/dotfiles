@@ -46,6 +46,20 @@ endif
 command! Ranger FloatermNew ranger
 command! -nargs=0 Py FloatermNew python
 command! Htop  FloatermNew htop 
+command! Pi w | so % | PlugInstall
+command! Il IndentLinesToggle
+command! H :call DisplayHelpFile()
+
+function! DisplayHelpFile()
+    try
+        let help_file = expand('~/.vim/help.txt')
+        let file_content = readfile(help_file)
+        echo join(file_content, "\n")
+    catch
+        echo "Error: Unable to read or display the help file."
+    endtry
+endfunction
+
 """"""""""""""""INDENTATION and SEARCH
 set autoindent		" auto indentation
 set incsearch		" incremental search
@@ -61,7 +75,7 @@ set hlsearch        " Highlighting when search
 """""" disable sound on errors
 set noerrorbells
 set novisualbell
-set t_vb=
+set t_vb=^G
 set tm=500
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -91,10 +105,13 @@ Plug 'semibran/vim-colors-synthetic'
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'rose-pine/vim'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
-Plug 'nanotech/jellybeans.vim'
 Plug 'hardhackerlabs/theme-vim', { 'as': 'hardhacker' }
+Plug 'junegunn/seoul256.vim'
+Plug 'rose-pine/vim'
+Plug 'ku1ik/vim-monokai'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'haishanh/night-owl.vim'
+Plug 'nanotech/jellybeans.vim'
 Plug 'ghifarit53/tokyonight-vim'
 "---------------------------
 Plug 'scrooloose/nerdtree'
@@ -108,7 +125,6 @@ Plug 'sheerun/vim-polyglot'
 "Plug 'bagrat/vim-buffet'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'voldikss/vim-floaterm'
-"Plug 'yggdroot/indentline'
 "Plug 'junegunn/rainbow_parentheses.vim'
 "Plug 'terryma/vim-multiple-cursors'
 Plug 'ap/vim-css-color'
@@ -124,15 +140,17 @@ call plug#end()
 
 """"""""""""AIRLINE CUSTOMIZATION
 let g:airline_powerline_fonts = 1
-let air_sel = 1 "take values 0-4
-let lsep = ['', '', '' , '' , '']
-let rsep = ['', '', '' , '' , ''] 
-let lasep = ['', '', '', '' , '']
-let rasep = ['', '', '', '' , '']
-let g:airline_left_sep = lsep[air_sel]
-let g:airline_left_alt_sep = lasep[air_sel]
-let g:airline_right_sep = rsep[air_sel]   
-let g:airline_right_alt_sep = rasep[air_sel]
+let air_sel = 2
+let lsep = ['', '', '', '', '']
+let rsep = ['', '', '', '', '']
+let lasep = ['', '', '', '', '']
+let rasep = ['', '', '', '', '']
+
+  let g:airline_left_sep = lsep[air_sel]
+  let g:airline_left_alt_sep = lasep[air_sel]
+  let g:airline_right_sep = rsep[air_sel]
+  let g:airline_right_alt_sep = rasep[air_sel]
+
 let g:airline_extensions = ['branch', 'tabline'] "if branch icon not showing do :PlugUpdate
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
@@ -144,11 +162,11 @@ let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 1
 let g:embark_terminal_italics = 1
 "colorscheme tokyonight
-"colorscheme catppuccin_mocha
-colorscheme embark
-"cycle through theme with leader-t
-let s:themes = ['tokyonight', 'rosepine', 'synthetic', 'ayu_dark', 'ayu_mirage', 'dracula', 'peachpuff', 'catppuccin_mocha', 'catppuccin_frappe', 'onehalfdark', 'hardhacker', 'embark', 'jellybeans', 'shades_of_purple', 'ron']
-let s:current_theme = 1 "0 to n
+colorscheme catppuccin_mocha
+"colorscheme embark
+"cycle through theme with leader-th
+let s:themes = ['tokyonight', 'rosepine', 'synthetic', 'night-owl', 'ayu_dark', 'ayu_mirage', 'dracula', 'peachpuff', 'catppuccin_mocha', 'catppuccin_frappe', 'onehalfdark', 'hardhacker', 'embark', 'monokai', 'seoul256', 'jellybeans', 'shades_of_purple', 'ron']
+let s:current_theme = 1 "0 to n-1
 
 function! CycleThemes()
     let s:current_theme += 1
@@ -158,7 +176,7 @@ function! CycleThemes()
     execute 'colorscheme ' . s:themes[s:current_theme]
 endfunction
 
-nnoremap <Leader>t :call CycleThemes()<CR>
+nnoremap <Leader>th :call CycleThemes()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""STARTIFY"
 let g:webdevicons_enable_startify = 1
@@ -198,8 +216,7 @@ let g:NERDTreePatternMatchHighlightFullName = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 ""switch next buffer by TAB key
-noremap <Tab> :bn<CR>
-"let g:indentLine_char = '|' "indent line character
+noremap <Tab> :bn!<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""VIMWIKI
@@ -222,4 +239,5 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {
          \ 'vhdl': '󰍛'}
 
 """"""""""""""""""""""""""""""""""""""indentline"
+let g:indentLine_enabled = 0
 let g:indentLine_char = '▏'
