@@ -14,7 +14,7 @@ set mouse=a
 set nobackup
 set history=1000
 set nowrap
-set noshowmode      "because i already have airline
+set noshowmode
 set hidden
 "set spell            " ]s and [s
 set undofile
@@ -25,16 +25,16 @@ set sidescrolloff=8
 set scrolloff=8
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 ""cut n copy key mapping
-vnoremap <C-c> "+y  
+vnoremap <C-c> "+y
 map <C-u> "+c
 """""""VIM LOOKS
-set nu            
-set encoding=UTF-8  
+set nu
+set encoding=UTF-8
 syntax on
-set cursorline        
+set cursorline
 
 " Set the line number color to dark grey
-highlight LineNr ctermfg=darkgray 
+highlight LineNr ctermfg=darkgray
 
 "Set the active line number color to white
 highlight ActiveLineNr guifg=white ctermfg=white
@@ -53,9 +53,10 @@ endif
 """"""""""""NEW COMMANDS
 command! Ranger FloatermNew ranger
 command! -nargs=0 Py FloatermNew python
-command! Htop  FloatermNew htop 
+command! Htop  FloatermNew htop
 command! Pi w | so % | PlugInstall
-command! Il IndentLinesToggle
+"command! Il IndentLinesToggle
+command! -bar Il if &list | set nolist | else | set list | endif | IndentLinesToggle
 command! H :call DisplayHelpFile()
 function! DisplayHelpFile()
     try
@@ -64,7 +65,7 @@ function! DisplayHelpFile()
         echo join(file_content, "\n")
     catch
         echo "Error: Unable to read or display the help file."
-    endtry
+    endtry 
 endfunction
 
 command! Theme :call DisplayThemes()
@@ -73,25 +74,28 @@ function! DisplayThemes()
     let theme_file = expand('~/.vim/themes.txt')
     let file_cont = readfile(theme_file)
     echo join(file_cont, "\n")
-    
+
     let theme_name = input('Enter theme name: ')
-    
+
       execute 'colorscheme ' . theme_name
       echo 'Theme set to: ' . theme_name
-  catch 
+  catch
     echo "Error: Unable to read or display the help file."
   endtry
 endfunction
 
-"openfiles with gf on it
+"command for trailing space delete in whole file
+command! Tsdel :%s/\s\+$//g
+nnoremap :w :w<Bar>:so %<CR>
+"openfiles when gf on it
 map gf :edit <cfile><cr>
 """"""""""""""""INDENTATION and SEARCH
-set autoindent		" auto indentation
-set incsearch		" incremental search
-set copyindent		" copy the previous indentation on autoindenting
-set ignorecase		" ignore case when searching
-set smartcase		" ignore case if search pattern is all lowercase,case-sensitive otherwise
-set smarttab		" insert tabs on the start of a line according to context
+set autoindent      " auto indentation
+set incsearch       " incremental search
+set copyindent      " copy the previous indentation on autoindenting
+set ignorecase      " ignore case when searching
+set smartcase       " ignore case if search pattern is all lowercase,case-sensitive otherwise
+set smarttab        " insert tabs on the start of a line according to context
 set showcmd         " Show partial command you type in the last line of the screen.
 set showmatch       " Show matching words during a search
 set hlsearch        " Highlighting when search
@@ -109,9 +113,9 @@ set tm=500
    set softtabstop=3
    set shiftwidth=4
    set tabstop=4
-   au FileType Makefile set noexpandtab 
+   au FileType Makefile set noexpandtab
    set list
-   set listchars=tab:󰞔\ ,trail:·
+   set listchars=tab:\ ,trail:·
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -170,7 +174,7 @@ call plug#end()
 
 """"""""""""AIRLINE CUSTOMIZATION
 let g:airline_powerline_fonts = 1
-let air_sel = 2
+let air_sel = 1
 let lsep = ['', '', '', '', '']
 let rsep = ['', '', '', '', '']
 let lasep = ['', '', '', '', '']
@@ -180,11 +184,11 @@ let rasep = ['', '', '', '', '']
   let g:airline_left_alt_sep = lasep[air_sel]
   let g:airline_right_sep = rsep[air_sel]
   let g:airline_right_alt_sep = rasep[air_sel]
-
 let g:airline_extensions = ['branch', 'tabline'] "if branch icon not showing do :PlugUpdate
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_section_z = airline#section#create(['%3p%% %L:%3v'])  "for a simpler section Z
+let g:airline#extensions#fileformat#enabled = 0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""COLOR THEME
 set termguicolors
@@ -221,7 +225,7 @@ let g:startify_lists = [
       \ { 'type': 'commands',  'header': ["  Commands"]       },
       \ ]
 """"""""""
-let g:startify_bookmarks = [ 
+let g:startify_bookmarks = [
          \{ 'v' : '~/.vimrc' },
          \{ 'z' : '~/.zshrc' },
          \{ 'a' : '~/.zsh_aliases'}
@@ -236,7 +240,7 @@ let g:floaterm_keymap_prev= '<F9>'
 let g:floaterm_keymap_new= '<F7>'
 let g:floaterm_autoclose=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""NERD Tree 
+""""""""""""""NERD Tree
 nmap <C-n> :NERDTreeToggle<CR>
 "use shitf+i to show hidden files
 let g:NERDTreeFileExtensionHighlightFullName = 1
@@ -257,7 +261,7 @@ let g:wiki_root = '~/Documents/wikivim'
 """"""""""Cpp file boiler plate
 
 au BufNewFile *.cpp 0r ~/.vim/templates/cpp_template.cpp
-au BufNewFile *.cpp call cursor(6,0) 
+au BufNewFile *.cpp call cursor(6,0)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""Verilog file config
 source ~/.vim/verilogconfigs.vim
