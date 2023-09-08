@@ -15,6 +15,14 @@ set nobackup
 set history=1000
 set nowrap
 set noshowmode      "because i already have airline
+set hidden
+"set spell            " ]s and [s
+set undofile
+set undodir=~/.vim/undo
+set undolevels=1000
+set wildmode=longest:full,full
+set sidescrolloff=8
+set scrolloff=8
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 ""cut n copy key mapping
 vnoremap <C-c> "+y  
@@ -49,7 +57,6 @@ command! Htop  FloatermNew htop
 command! Pi w | so % | PlugInstall
 command! Il IndentLinesToggle
 command! H :call DisplayHelpFile()
-
 function! DisplayHelpFile()
     try
         let help_file = expand('~/.vim/help.txt')
@@ -60,6 +67,24 @@ function! DisplayHelpFile()
     endtry
 endfunction
 
+command! Theme :call DisplayThemes()
+function! DisplayThemes()
+  try
+    let theme_file = expand('~/.vim/themes.txt')
+    let file_cont = readfile(theme_file)
+    echo join(file_cont, "\n")
+    
+    let theme_name = input('Enter theme name: ')
+    
+      execute 'colorscheme ' . theme_name
+      echo 'Theme set to: ' . theme_name
+  catch 
+    echo "Error: Unable to read or display the help file."
+  endtry
+endfunction
+
+"openfiles with gf on it
+map gf :edit <cfile><cr>
 """"""""""""""""INDENTATION and SEARCH
 set autoindent		" auto indentation
 set incsearch		" incremental search
@@ -81,18 +106,20 @@ set tm=500
 
 """""" TAB setting
    set expandtab        "replace <TAB> with spaces
-   set softtabstop=3 
-   set shiftwidth=4 
+   set softtabstop=3
+   set shiftwidth=4
    set tabstop=4
    au FileType Makefile set noexpandtab 
+   set list
+   set listchars=tab:󰞔\ ,trail:·
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""FILETYPE
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""PLUG
 call plug#begin('~/local/share/nvim/plugged')
@@ -106,10 +133,12 @@ Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'hardhackerlabs/theme-vim', { 'as': 'hardhacker' }
+Plug 'leviosa42/vim-github-theme'
 Plug 'junegunn/seoul256.vim'
 Plug 'rose-pine/vim'
 Plug 'ku1ik/vim-monokai'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
 Plug 'haishanh/night-owl.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'ghifarit53/tokyonight-vim'
@@ -125,6 +154,7 @@ Plug 'sheerun/vim-polyglot'
 "Plug 'bagrat/vim-buffet'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'voldikss/vim-floaterm'
+"Plug 'Donaldttt/fuzzyy'
 "Plug 'junegunn/rainbow_parentheses.vim'
 "Plug 'terryma/vim-multiple-cursors'
 Plug 'ap/vim-css-color'
@@ -165,7 +195,7 @@ let g:embark_terminal_italics = 1
 colorscheme catppuccin_mocha
 "colorscheme embark
 "cycle through theme with leader-th
-let s:themes = ['tokyonight', 'rosepine', 'synthetic', 'night-owl', 'ayu_dark', 'ayu_mirage', 'dracula', 'peachpuff', 'catppuccin_mocha', 'catppuccin_frappe', 'onehalfdark', 'hardhacker', 'embark', 'monokai', 'seoul256', 'jellybeans', 'shades_of_purple', 'ron']
+let s:themes = ['tokyonight', 'spaceduck', 'github', 'rosepine', 'synthetic', 'night-owl', 'ayu_dark', 'ayu_mirage', 'dracula', 'peachpuff', 'catppuccin_mocha', 'catppuccin_frappe', 'onehalfdark', 'hardhacker', 'embark', 'monokai', 'seoul256', 'jellybeans', 'shades_of_purple', 'ron']
 let s:current_theme = 1 "0 to n-1
 
 function! CycleThemes()
@@ -193,8 +223,8 @@ let g:startify_lists = [
 """"""""""
 let g:startify_bookmarks = [ 
          \{ 'v' : '~/.vimrc' },
-         \{ 'b' : '~/.bashrc' },
-         \{ 'a' : '~/.bash_aliases'}
+         \{ 'z' : '~/.zshrc' },
+         \{ 'a' : '~/.zsh_aliases'}
          \]
 
 let g:startify_enable_special = 0   "disable quit and empty buffer
@@ -208,11 +238,12 @@ let g:floaterm_autoclose=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""NERD Tree 
 nmap <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeShowHidden = 1 "show hidden files
+"use shitf+i to show hidden files
 let g:NERDTreeFileExtensionHighlightFullName = 1
-let g:NERDTreeExactMatchHighlightFullName = 1
-let g:NERDTreePatternMatchHighlightFullName = 1
-"let g:NERDTreeLimitedSyntax = 1 "disable uncommon extension highlighting
+augroup nerdtreehidecwd       "conceal the '/' after direcotry name in nerdtree
+	autocmd!
+	autocmd FileType nerdtree setlocal conceallevel=3 | syntax match NERDTreeDirSlash #/$# containedin=NERDTreeDir conceal contained
+augroup end
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 ""switch next buffer by TAB key
