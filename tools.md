@@ -20,19 +20,13 @@ sudo apt install -y git\
 
 ```
 
-```
-sudo apt install zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-```
-
 icons in ranger https://github.com/alexanderjeurissen/ranger_devicons
 neovim appimg : https://github.com/neovim/neovim/wiki/Installing-Neovim#linux
 nvchad :  git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
 
 
 
-SSH SETUP
+## SSH SETUP
 
 ```
 ssh-keygen -t ed25519 -C youremail@email.com
@@ -101,3 +95,27 @@ ssh -T git@github.com
 
 If you got a message like.. You've successfully authenticated, but GitHub does not provide shell access.
 It worked! All ok.
+<br>
+
+## ZSH SETUP
+
+```
+sudo apt install zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+```
+
+### syntx highlight + autosuggest
+
+```
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+then add them to plugin in .zshrc
+
+```
+plugins=( 
+    # other plugins...
+    zsh-autosuggestions
+)
+```
