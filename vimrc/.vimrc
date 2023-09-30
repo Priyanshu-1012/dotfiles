@@ -86,7 +86,6 @@ endfunction
 
 "command for trailing space delete in whole file
 command! Tsdel :%s/\s\+$//g
-nnoremap :w :w<Bar>:so %<CR>
 "openfiles when gf on it
 map gf :edit <cfile><cr>
 """"""""""""""""INDENTATION and SEARCH
